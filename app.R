@@ -1,4 +1,5 @@
 library(tidyverse)
+install.packages('devtools')
 library(readr)
 library(plotly)
 library(dash)
