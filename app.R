@@ -1,5 +1,6 @@
 library(tidyverse)
 install.packages('devtools')
+install.packages('rnaturalearth')
 library(readr)
 library(plotly)
 library(dash)
