@@ -1,6 +1,6 @@
 library(tidyverse)
-install.packages('devtools')
-install.packages('rnaturalearth')
+#install.packages('devtools')
+#install.packages('rnaturalearth')
 library(readr)
 library(plotly)
 library(dash)
@@ -191,6 +191,7 @@ residential <- residential %>% layout(
 #fig<-plot_ly(raw_data, type='choropleth', locationmode='Poland',locations=raw_data$iso_3166_2_code, z=raw_data$grocery_and_pharmacy_percent_change_from_baseline, text=raw_data$retail_and_recreation_percent_change_from_baseline, colorscale="Viridis")
 # devtools::install_github("ropensci/rnaturalearthhires") 
 page_title<-htmlH1("Google Mobility Report - PL")
+page_auth<-htmlPlaintext("Agata Sidło, Dominika Kałafut")
 page_descr<-htmlPlaintext("Na podstawie danych pobranych z https://www.google.com/covid19/mobility/")
 page_subtitle<-htmlH2("O co chodzi?")
 page_descr_long<-htmlP("Pandemia zmieniła dotychczasowe schematy poruszania się. Google udostępnia zebrane w tym czasie dane oparte o usługi geolokalizacyjne obecne w telefonach komórkowych i innych urządzeniach oraz zestawia je z okresem sprzed pandemii, aby pokazać co się zmieniło.")
@@ -216,6 +217,7 @@ app$layout(
   htmlDiv(
     list(
       page_title,
+      page_auth,
       page_descr,
       page_subtitle,
       page_descr_long,
