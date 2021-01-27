@@ -17,18 +17,18 @@ raw_data$iso_3166_2_code<-as.factor(raw_data$iso_3166_2_code)
 raw_data$sub_region_1 %>% str_replace_all("Łódź","Lódz") -> raw_data$sub_region_1
 raw_data$sub_region_1 %>% str_replace_all("Świętokrzyskie","Swietokrzyskie") -> raw_data$sub_region_1
 poland <- ne_states(country = "Poland", returnclass = "sf")
-mapping<-data.frame(poland$name_en,poland$name_pl)
+mapping<-data.frame(poland$name_en,poland$name_alt)
 poland_plt<-plot_ly(poland,split=~name_pl)
 raw_data<-merge(raw_data,mapping,by.x="sub_region_1",by.y="poland.name_en",sort=FALSE)
 #raw_data<-merge(raw_data,mapping,by=intersect(names(raw_data), names(mapping)),all.y=TRUE,sort=FALSE)
 #raw_data<-subset(raw_data, select = -c(sub_region_1) )
-poland.name_pl<-as.factor(raw_data$poland.name_pl)
-retail_recreation <- plot_ly(data=raw_data,x = ~date, y = ~retail_and_recreation_percent_change_from_baseline,color=~poland.name_pl,mode="line")
-grocery_pharmacy <- plot_ly(data=raw_data,x = ~date, y = ~grocery_and_pharmacy_percent_change_from_baseline,color=~poland.name_pl,mode="line")
-parks <- plot_ly(data=raw_data,x = ~date, y = ~parks_percent_change_from_baseline,color=~poland.name_pl,mode="line")
-transit <- plot_ly(data=raw_data,x = ~date, y = ~transit_stations_percent_change_from_baseline,color=~poland.name_pl,mode="line")
-workplaces <- plot_ly(data=raw_data,x = ~date, y = ~workplaces_percent_change_from_baseline,color=~poland.name_pl,mode="line")
-residential <- plot_ly(data=raw_data,x = ~date, y = ~residential_percent_change_from_baseline,color=~poland.name_pl,mode="line")
+poland.name_alt<-as.factor(raw_data$poland.name_alt)
+retail_recreation <- plot_ly(data=raw_data,x = ~date, y = ~retail_and_recreation_percent_change_from_baseline,color=~poland.name_alt,mode="line")
+grocery_pharmacy <- plot_ly(data=raw_data,x = ~date, y = ~grocery_and_pharmacy_percent_change_from_baseline,color=~poland.name_alt,mode="line")
+parks <- plot_ly(data=raw_data,x = ~date, y = ~parks_percent_change_from_baseline,color=~poland.name_alt,mode="line")
+transit <- plot_ly(data=raw_data,x = ~date, y = ~transit_stations_percent_change_from_baseline,color=~poland.name_alt,mode="line")
+workplaces <- plot_ly(data=raw_data,x = ~date, y = ~workplaces_percent_change_from_baseline,color=~poland.name_alt,mode="line")
+residential <- plot_ly(data=raw_data,x = ~date, y = ~residential_percent_change_from_baseline,color=~poland.name_alt,mode="line")
 
 
 retail_recreation <- retail_recreation %>% layout(
