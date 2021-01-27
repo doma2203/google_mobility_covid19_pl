@@ -1,6 +1,8 @@
 r <- getOption('repos')
 r['CRAN'] <- 'http://cloud.r-project.org'
 options(repos=r)
+devtools::install_github("ropensci/rnaturalearthhires")
+install.packages('rnaturalearth')
 install.packages('remotes')
 install.packages('plotly')
 install.packages('tidyverse')
